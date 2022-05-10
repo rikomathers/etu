@@ -1,5 +1,7 @@
 package com.example.etu
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +22,37 @@ class StartFragment : BaseFragment() {
     }
 
     private fun initViews() {
-        binding.imageButtonCamera.setOnClickListener {
-            fragmentActions.openFragment(CameraFragment())
+        initImageCamera()
+    }
+
+    private fun initImageCamera() {
+        binding.cameraContainer.setOnClickListener {
+            if (isPermissionGranted(Manifest.permission.CAMERA)) {
+                fragmentActions.openFragment(CameraFragment())
+            } else {
+                requirePermissions(
+                    PERMISSION_REQUEST_CAMERA,
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            }
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CAMERA) {
+            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+                fragmentActions.openFragment(CameraFragment())
+            }
+        }
+    }
+
+    companion object {
+        private const val PERMISSION_REQUEST_CAMERA = 1
     }
 }

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -55,3 +56,9 @@ fun Fragment.hideKeyboard() {
 fun FragmentActivity.closeLastFragment() {
     supportFragmentManager.popBackStack()
 }
+
+fun Fragment.requirePermissions(requestCode: Int, vararg permissions: String) =
+    requestPermissions(permissions, requestCode)
+
+fun Activity.requirePermissions(requestCode: Int, vararg permissions: String) =
+    ActivityCompat.requestPermissions(this, permissions, requestCode)
