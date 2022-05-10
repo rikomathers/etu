@@ -1,4 +1,4 @@
-package com.example.etu
+package com.example.etu.utils
 
 import android.app.Activity
 import android.content.pm.PackageManager

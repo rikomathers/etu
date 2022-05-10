@@ -1,4 +1,4 @@
-package com.example.etu
+package com.example.etu.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.etu.databinding.StartFragmentBinding
+import com.example.etu.utils.isPermissionGranted
+import com.example.etu.utils.requirePermissions
 
 class StartFragment : BaseFragment() {
 

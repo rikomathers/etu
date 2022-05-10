@@ -1,4 +1,4 @@
-package com.example.etu
+package com.example.etu.utils
 
 import android.util.Size
 import androidx.camera.core.CameraSelector

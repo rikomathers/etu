@@ -1,9 +1,12 @@
-package com.example.etu
+package com.example.etu.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.example.etu.utils.addFragment
+import com.example.etu.utils.closeLastFragment
 import com.example.etu.databinding.ActivityMainBinding
+import com.example.etu.utils.hideKeyboard
+import com.example.etu.utils.replaceFragment
 
 class MainActivity : AppCompatActivity(), FragmentActions {
     private lateinit var binding: ActivityMainBinding

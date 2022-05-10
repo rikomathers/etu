@@ -1,4 +1,4 @@
-package com.example.etu
+package com.example.etu.ui
 
 import android.content.Context
 import android.os.Bundle
